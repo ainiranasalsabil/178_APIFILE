@@ -5,3 +5,5 @@ module.exports = {
   'seeders-path': path.resolve('seeders'),
   'migrations-path': path.resolve('migrations')
 };
+//  Konfigurasi untuk Sequelize CLI
+//  File ini memberi tahu Sequelize lokasi folder penting:
