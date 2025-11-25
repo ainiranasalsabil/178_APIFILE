@@ -11,4 +11,34 @@ async function createKomik(req, res) {
             komikData.imageData = req.file.buffer;
         }
 
-       
+        const result = await komikService.createKomik(db, komikData);
+        res.status(201).json({ success: true, data: result });
+    } catch (error) {
+        res.status(400).json({ success: false, error: error.message });
+    }
+}
+
+async function getAllKomik(req, res) {
+    try {
+        const result = await komikService.getAllKomik(db);
+        res.status(200).json({
+            success: true,
+            data: result,
+        });
+    } catch (error) {
+        res.status(500).json({ success: false, error: error.message });
+    }
+}
+
+async function getKomikById(req, res) {
+    try {
+        const { id } = req.params;
+        const result = await komikService.getKomikById(db, id);
+        res.status(200).json({
+            success: true,
+            data: result,
+        });
+    } catch (error) {
+        res.status(404).json({ success: false, error: error.message });
+    }
+}
